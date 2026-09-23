@@ -7,10 +7,14 @@
       "pieces": [
         "start",
         "flat",
+        "spikes",
         "gap",
         "flat",
         "spikes",
         "platform",
+        "gap",
+        "step",
+        "spikepit",
         "stairs",
         "finish"
       ]
@@ -26,6 +30,10 @@
         "platform",
         "gap",
         "flat",
+        "spikes",
+        "gap",
+        "platform",
+        "stairs",
         "finish"
       ]
     }
