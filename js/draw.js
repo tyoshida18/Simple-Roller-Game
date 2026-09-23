@@ -117,7 +117,7 @@ Draw.player = function () {
   var centerY = Player.y + CONFIG.PLAYER_SIZE / 2;
 
   // the circle
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = "#ffd700";
   ctx.strokeStyle = "#000000";
   ctx.lineWidth = CONFIG.LINE_WIDTH;
   ctx.beginPath();
