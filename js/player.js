@@ -38,6 +38,8 @@ Player.update = function () {
   // --- 2. jump, but only if we are standing on something --------------
   if (Input.jump && Player.onGround) {
     Player.vy = -CONFIG.JUMP_POWER;   // negative is UP
+    if (Input.left)  { Player.vx = -CONFIG.MOVE_SPEED * (1 + CONFIG.JUMP_SIDE_BOOST); }
+    if (Input.right) { Player.vx =  CONFIG.MOVE_SPEED * (1 + CONFIG.JUMP_SIDE_BOOST); }
     Player.onGround = false;
   }
 
