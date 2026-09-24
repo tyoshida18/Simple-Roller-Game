@@ -46,6 +46,25 @@ Draw.everything = function () {
   Draw.player();
 
   ctx.restore();
+  Draw.progress();
+};
+
+// Show how far the player has traveled through the current level.
+Draw.progress = function () {
+  var levelDistance = Level.pixelWidth() - CONFIG.PLAYER_SIZE - Level.startX;
+  var traveled = Player.x - Level.startX;
+  var percent = 0;
+
+  if (levelDistance > 0) {
+    percent = Math.round((traveled / levelDistance) * 100);
+  }
+  if (percent < 0) { percent = 0; }
+  if (percent > 100) { percent = 100; }
+
+  var ctx = Draw.ctx;
+  ctx.fillStyle = "#000000";
+  ctx.font = "16px monospace";
+  ctx.fillText("Progress: " + percent + "%", 12, 24);
 };
 
 // Draw every grid square that is currently on screen.
