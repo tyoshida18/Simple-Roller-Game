@@ -14,8 +14,7 @@ var Player = {
   vy: 0,           // speed up and down
   onGround: false, // is the player standing on something right now?
   angle: 0,        // how far the circle has rolled, for drawing the dot
-  jumpLock: false, // prevent repeated jumps while the jump key is held
-  jumpsRemaining: 0 // how many extra air jumps are left
+  jumpsRemaining: 0
 };
 
 // Put the player back at the level's S square.
@@ -26,7 +25,6 @@ Player.reset = function () {
   Player.vy = 0;
   Player.onGround = false;
   Player.angle = 0;
-  Player.jumpLock = false;
   Player.jumpsRemaining = CONFIG.MAX_JUMPS - 1;
 };
 
@@ -48,18 +46,16 @@ Player.update = function () {
   if (Input.right) { Player.vx =  CONFIG.MOVE_SPEED; }
 
   // --- 2. jump ---------------------------------------------------------
-  if (Input.jump && !Player.jumpLock) {
+  if (Input.jumpPressed) {
     if (Player.onGround) {
       Player.doJump();
       Player.jumpsRemaining = CONFIG.MAX_JUMPS - 1;
-      Player.jumpLock = true;
     } else if (Player.jumpsRemaining > 0) {
       Player.doJump();
       Player.jumpsRemaining = Player.jumpsRemaining - 1;
-      Player.jumpLock = true;
     }
+    Input.jumpPressed = false;
   }
-  if (!Input.jump) { Player.jumpLock = false; }
 
   // --- 3. gravity pulls down every single frame -----------------------
   Player.vy = Player.vy + CONFIG.GRAVITY;
@@ -85,7 +81,7 @@ Player.update = function () {
 
   for (var j = 0; j < Math.abs(Player.vy); j++) {
     if (Collide.hitsSolid(Player.x, Player.y + stepY, size, size)) {
-      if (stepY > 0) { 
+      if (stepY > 0) {
         Player.onGround = true;
         Player.jumpsRemaining = CONFIG.MAX_JUMPS - 1;
       }
