@@ -23,6 +23,7 @@ var CONFIG = {
   JUMP_SIDE_BOOST: 2.4, // extra sideways speed while taking off
   GRAVITY: 0.8,       // how hard the world pulls DOWN. bigger = heavier
   MAX_FALL: 16,       // fastest the player is allowed to fall
+  MAX_JUMPS: 2,       // total jumps allowed before touching the ground
 
   // --- the player's size ----------------------------------------------
   PLAYER_SIZE: 32,    // the player collides as a 32x32 box
