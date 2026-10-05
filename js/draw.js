@@ -51,7 +51,7 @@ Draw.everything = function () {
 
 // Show how far the player has traveled through the current level.
 Draw.progress = function () {
-  var levelDistance = Level.pixelWidth() - Level.startX;
+  var levelDistance = Level.pixelWidth() - Level.startX + CONFIG.TILE;
   var traveled = Player.x - Level.startX;
   var percent = 0;
 
